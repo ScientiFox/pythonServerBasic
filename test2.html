@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Javascript Tinkering</h2>
+
+<h3>And now some resources I keep copy-pasting.</h3>
+
+<br/>
+
+<span id="clickerOP"></span>
+
+<br/> <!lol web design>
+<br/> <!lol web design>
+
+<span id="button1" onclick="clickerIDCheck(event);">First one</span>
+<span id="button2" onclick="clickerIDCheck(event);">Second one</span>
+<span id="button3" onclick="clickerIDCheck(event);">Third one</span>
+
+<br/>
+
+<a href="test3.html">Next one?</a>
+
+<br/>
+
+
+<script>
+
+function clickerIDCheck(event){	
+	document.getElementById('clickerOP').innerHTML = event.target.id;
+}
+
+</script>
+
+
+</body>
+</html>

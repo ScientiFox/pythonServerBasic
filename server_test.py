@@ -66,7 +66,8 @@ while True:
 
             #Note the request type
             print(key_req)
-            print(req_dat)
+            for a in req_dat:
+                print(a,req_dat[a])
             print("--------")
 
             #Figure what the request actually is
@@ -87,10 +88,20 @@ while True:
                 ssl_conn.sendall(b'\r\n')
                 ssl_conn.sendall(DATA_FILE) #Send the actual data
 
-            else: #If it's not looking for an asset
-                jsfil = open(jsloc,'r') #Open up the source file
-                HTTP_FILE = jsfil.read() #Read it in
-                jsfil.close() #close it quick before it gets corrupted
+            else: #If it's not looking for an asset, try a page
+                htmlSend = key_req.split(" ")[1][1:]
+                print("HTML SEND:",htmlSend)
+                if htmlSend == '':
+                    fil = jsloc
+                else:
+                    fil = htmlSend
+
+                try: #Go looking for the file
+                    jsfil = open(fil,'r') #Open up the source file
+                    HTTP_FILE = jsfil.read() #Read it in
+                    jsfil.close() #close it quick before it gets corrupted
+                except: #no file
+                    HTTP_FILE = "<h2> LINK NOT FOUND </h2> <br/> Maybe there's a typo?"
 
                 #Build up a socket ssl connection and make the HTTP reply
                 ssl_conn.sendall(b'HTTP/1.1 200 OK\r\n')
