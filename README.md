@@ -1,3 +1,5 @@
+![image](https://github.com/user-attachments/assets/261f975d-f23d-4677-afb2-0f69ac092a91)
+
 A barebones scaffold for a python server to interface with a browser.
 
 The python server side implements SSL, and requires a PEM key and cert, locally signable through openSSL or what have you.
